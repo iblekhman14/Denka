@@ -20,6 +20,7 @@
       min-height: 100vh;
       font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #f9e6e9, #f5d1e8);
+      position: relative;
     }
 
     .card {
@@ -35,6 +36,7 @@
       background-position: center;
       position: relative;
       overflow: hidden;
+      animation: fadeIn 1.5s ease-in;
     }
 
     /* Card overlay for soft background */
@@ -52,6 +54,8 @@
     .card-content {
       position: relative;
       z-index: 1;
+      animation: fadeInText 2s ease-in forwards;
+      opacity: 0;
     }
 
     h1 {
@@ -72,28 +76,109 @@
       color: #d46783;
       font-style: italic;
       margin-top: 20px;
+      animation: pulse 1.5s infinite;
     }
 
-    /* Decorative floral elements */
+    /* Decorative floral elements on pink background */
+    .flower-side {
+      position: absolute;
+      opacity: 0.5;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Left side flowers */
+    .flower-side-left {
+      top: 80px;
+      left: 15px;
+      width: 60px;
+    }
+    .flower-side-left-2 {
+      top: 180px;
+      left: 20px;
+      width: 50px;
+      animation-delay: 0.5s;
+    }
+    .flower-side-left-3 {
+      top: 280px;
+      left: 25px;
+      width: 70px;
+      animation-delay: 1s;
+    }
+
+    /* Right side flowers */
+    .flower-side-right {
+      top: 100px;
+      right: 15px;
+      width: 60px;
+    }
+    .flower-side-right-2 {
+      top: 200px;
+      right: 20px;
+      width: 50px;
+      animation-delay: 0.5s;
+    }
+    .flower-side-right-3 {
+      top: 300px;
+      right: 25px;
+      width: 70px;
+      animation-delay: 1s;
+    }
+
+    /* Corner flowers inside the card */
     .flower {
       position: absolute;
       width: 50px;
       height: 50px;
       opacity: 0.5;
-      transform: rotate(20deg);
     }
     .flower.top-left {
       top: 10px;
       left: 10px;
+      animation: bounce 2s ease-in-out infinite;
     }
     .flower.bottom-right {
       bottom: 10px;
       right: 10px;
       transform: rotate(-20deg);
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInText {
+      to { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
     }
   </style>
 </head>
 <body>
+
+  <!-- Decorative flowers on pink background -->
+  <img src="https://img.icons8.com/color/48/flower.png" alt="side flower" class="flower-side flower-side-left">
+  <img src="https://img.icons8.com/color/48/flower.png" alt="side flower" class="flower-side flower-side-left-2">
+  <img src="https://img.icons8.com/color/48/flower.png" alt="side flower" class="flower-side flower-side-left-3">
+
+  <img src="https://img.icons8.com/color/48/flower.png" alt="side flower" class="flower-side flower-side-right">
+  <img src="https://img.icons8.com/color/48/flower.png" alt="side flower" class="flower-side flower-side-right-2">
+  <img src="https://img.icons8.com/color/48/flower.png" alt="side flower" class="flower-side flower-side-right-3">
 
   <div class="card">
     <div class="card-content">
@@ -102,7 +187,7 @@
       <div class="signature">С обич, Иво</div>
     </div>
 
-    <!-- Decorative flowers -->
+    <!-- Decorative flowers inside the card -->
     <img src="https://img.icons8.com/color/48/flower.png" alt="flower" class="flower top-left">
     <img src="https://img.icons8.com/color/48/flower.png" alt="flower" class="flower bottom-right">
   </div>
